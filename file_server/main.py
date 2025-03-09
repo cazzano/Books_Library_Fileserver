@@ -627,8 +627,7 @@ def operation_status(operation_id):
     return jsonify(result)
 
 
-# Cleanup function to run at application startup
-@app.before_first_request
+# Cleanup function that used to be @app.before_first_request
 def cleanup_temp_files():
     """Clean up any temporary files from previous runs"""
     if not is_running_from_reloader():
@@ -644,6 +643,11 @@ def cleanup_temp_files():
                 except Exception as e:
                     logger.error(
                         f"Error cleaning up temp file {filename}: {e}")
+
+
+# Execute the cleanup function at startup
+with app.app_context():
+    cleanup_temp_files()
 
 
 # Error handlers
