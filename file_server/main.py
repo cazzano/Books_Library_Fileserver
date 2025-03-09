@@ -26,7 +26,8 @@ os.makedirs(PICTURES_FOLDER, exist_ok=True)
 os.makedirs(DOWNLOADS_FOLDER, exist_ok=True)
 
 # Configuration
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+app.config['MAX_CONTENT_LENGTH'] = 100 * \
+    1024 * 1024 * 1024  # 16MB max file size
 ALLOWED_PICTURE_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 ALLOWED_DOWNLOAD_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt', 'zip', 'rar'}
 
